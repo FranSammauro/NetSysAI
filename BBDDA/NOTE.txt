@@ -1,4 +1,0 @@
-Aca ira la parte de la base de datos
-del proyecto, borren este txt 
-cuando ya hagan algo en el proyecto
-que tenga que ver con guardar registros

@@ -1,13 +1,25 @@
 import { useState, useEffect } from "react";
 import { analyzeURL } from "../services/api";
 
-function HomePage() {
+function HomePage({ goLogin }) {
   const [url, setUrl] = useState("");
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
+
   const handleAnalyze = async () => {
     if (!url) return;
+
+    if (!token) {
+      alert("Tenés que iniciar sesión para analizar URLs");
+      return;
+    }
 
     setLoading(true);
     setResult(null);
@@ -109,8 +121,21 @@ function HomePage() {
 
   return (
     <div>
-      {/* ✅ ACÁ VA EL CANVAS */}
       <canvas id="particles-canvas"></canvas>
+
+      {/* 🔥 NAV SIMPLE */}
+      {token ? (
+        <div className="user-bar">
+          <span>Sesión activa</span>
+          <button onClick={handleLogout} className="logout-btn">
+            Cerrar sesión
+          </button>
+        </div>
+      ) : (
+        <button onClick={goLogin} className="login-btn">
+          Login / Registro
+        </button>
+      )}
 
       <section className="hero">
         <div className="hero-content">

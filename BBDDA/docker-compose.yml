@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: netsys_db
+    restart: always
+    environment:
+      POSTGRES_USER: netsys
+      POSTGRES_PASSWORD: netsys123
+      POSTGRES_DB: netsysai
+    ports:
+      - "5432:5432"

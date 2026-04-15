@@ -1,108 +1,160 @@
-# 🛡 NetSys AI — Frontend
+# NetSysAI — Frontend
 
-> **React UI for URL Threat Analysis**  
-> Simple, fast, and intuitive interface to analyze URLs and display security verdicts.
-
----
-
-## 🚀 Overview
-
-**NetSys AI Frontend** is a React (Vite) application that allows users to:
-
-- Input a URL
-- Send it to the backend for analysis
-- Receive a clear security verdict:
-  - ✅ Safe
-  - ⚠ Suspicious
-  - ❌ Dangerous
-
-It is designed for **scalability**, **modularity**, and **future AI integration**.
+Frontend application for NetSysAI, built with React and Vite.  
+Provides the user interface for URL analysis, authentication, and interaction with the backend API.
 
 ---
 
-## 🏗 Project Structure
+## Overview
 
-```bash
-FRONTEND/
+The NetSysAI frontend allows users to:
+
+- Register and log into the platform
+- Submit URLs for analysis
+- Receive real-time security feedback
+- Interact with a modern and responsive UI
+
+The application is designed with a modular structure to support future scalability and integration with advanced analysis features.
+
+---
+
+## Project Structure
+```
+Frontend-NetSysAI/
 ├── src/
-│   ├── assets/        # Images, icons, global styles
-│   ├── components/    # Reusable UI components (Button, Card, Input)
-│   ├── pages/         # Full pages (HomePage, ResultPage)
-│   ├── services/      # API calls and business logic
-│   ├── hooks/         # Custom React hooks
-│   └── main.jsx       # Entry point
-├── public/            # Static assets
-├── package.json       # Dependencies and scripts
-└── vite.config.js     # Vite configuration
+│ ├── assets/ # Global styles and static assets
+│ ├── components/ # Reusable UI components
+│ ├── pages/ # Application views (Home, Login, Register)
+│ ├── services/ # API communication logic
+│ ├── hooks/ # Custom React hooks (future use)
+│ ├── App.jsx # Main app component
+│ └── main.jsx # Entry point
+├── public/ # Static files
+├── package.json # Dependencies and scripts
+└── vite.config.js # Vite configuration
 ```
 
-## 🧩 Folder Roles
+---
 
-- **components**: Small, reusable UI pieces.
-- **pages**: Main views of the application.
-- **services**: Functions to interact with backend API.
-- **hooks**: Custom hooks for state management or reusable logic.
-- **assets**: Images, icons, or global styles.
+## Tech Stack
 
-## 🧩 Installation
+- React (Vite) — Frontend framework
+- JavaScript (ES6+) — Core language
+- CSS — Styling (custom global styles)
+- Fetch API — Backend communication
 
-Clone the repository:
+---
+
+## Setup
+
+### 1. Clone repository
 
 ```bash
-git clone <https://github.com/FranSammauro/NetSysAI.gitl>
-cd FRONTEND
+git clone https://github.com/FranSammauro/NetSysAI.git
+cd Frontend-NetSysAI
 ```
-
-Install dependencies:
-
-```bash
+## 2. Install dependencies
+```
 npm install
 ```
-
-Run development server:
-
-```bash
+## 3. Run development server
+```
 npm run dev
 ```
+The application will be avialbe at:
+```
+http://localhost:5173
+```
 
-You should see the app at http://localhost:5173.
+---
 
-## 🛠 Tech Stack
+## Features
+- URL analysis interface
+- Integration with backend /analyze endpoint
+- Real-time display of analysis results
+- User authentication (register and login)
+- Token-based session management (JWT)
+- Responsive and interactive UI
+- Canvas-based background animation
 
-- React (Vite) — UI framework
-- TailwindCSS — Styling
-- Axios / Fetch — API requests
 
-## ⚡ Features
+---
 
-- URL input form
-- Real-time threat classification
-- Clear UI for results
-- Modular React architecture for easy scaling
+## API Integration
+The frontend communicates with the backend via HTTP requests.
+### Analyze Endpoint
+ - Endpoint: POST /analyze
+ - Requires authentication (JWT)
 
-## 📦 How to Add New Features
+Example request:
+```
+{
+  "url": "http://example.com/login"
+}
+```
+Authorization header
+```
+Authorization: Bearer <token>
+```
 
-- **Components**: Add new reusable UI elements in `src/components/`.
-- **Pages**: Add new views in `src/pages/`.
-- **Services**: Put API calls in `src/services/`.
-- **Hooks**: Create reusable logic in `src/hooks/`.
-- **Assets**: Add images/icons in `src/assets/`.
+---
+## Authentication Flow
 
-## 🗺 Roadmap
+1. User registers via /register
+2. User logs in via /login
+3. Backend returns a JWT token
+4. Token is stored in localStorage
+5. Token is sent in all protected requests (e.g. /analyze)
 
-- ✓ Basic URL analysis interface
-- ⬜ Connect frontend to `/analyze` backend endpoint
-- ⬜ Display detailed analysis results
-- ⬜ Add history and logging
-- ⬜ Implement AI-powered threat detection UI
+---
 
-## 💡 Notes for Developers
+## UI Structure
+- Home Page
+ - URL input
+ - Analyze button
+ - Result display
+- Authentication Pages (planned/implemented)
+ - Login
+ - Register
 
-- Use functional components and hooks.
-- Keep components small and reusable.
-- Follow the folder structure for maintainability.
-- Styles should go in `assets/global.css` or Tailwind classes.
+---
 
-## 📄 License
+## Development Guidelines
+- Use functional components and React hooks
+- Keep components reusable and modular
+- Separate UI from API logic (services/)
+- Maintain clean and scalable structure
+- Avoid embedding business logic inside components
 
-Frontend code is under development; license TBD.
+---
+
+## Current Status
+- Frontend connected to backend API
+- Real-time URL analysis working
+- Authentication flow implemented
+- Token-based access integrated
+- Core UI completed
+
+---
+
+## Roadmap
+- Improve authentication UI/UX
+- Add protected routes (redirect if not authenticated)
+- Implement logout functionality
+- Store and display analysis history
+- Enhance UI with better feedback and states
+- Integrate advanced analysis results
+- Prepare for AI-based features
+
+---
+
+## Notes
+- Ensure backend is running before using the frontend
+- Verify that JWT token is stored correctly after login
+- Update API URLs if deploying to production
+
+--- 
+
+## License
+
+Project under development. License to be defined.
